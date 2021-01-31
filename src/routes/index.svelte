@@ -61,15 +61,15 @@
   })
 
   const heroEvent = () => {
-    goto(`movie/${hero.id}`)
+    window.location = `movie/${hero.id}`;
   }
 
   const upcomingEvent = (e) => {
-    goto(`movie/${e.detail.id}`);
+    window.location = `movie/${e.detail.id}`;
   }
 
   const popularTvEvent = (e) => {
-    goto(`tv/${e.detail.id}`);
+    window.location = `tv/${e.detail.id}`;
   }
 </script>
 
@@ -95,7 +95,7 @@
       <div class="list">
         <div>
           <h4 class="list__title">Upcoming movie</h4>
-          <a class="list__link" href="movie/upcoming/1">see more</a>
+          <a class="list__link" href="movie/upcoming/1" rel=external>see more</a>
         </div>
         <List data={upcoming} on:itemSelected={upcomingEvent}/>
       </div>
@@ -104,7 +104,7 @@
       <div class="grid">
         <div>
           <h4 class="grid__title">Popular TV</h4>
-          <a class="grid__link" href="tv/popular/1">see more</a>
+          <a class="grid__link" href="tv/popular/1" rel=external>see more</a>
         </div>
         <Grid data={popularTv} on:itemSelected={popularTvEvent} />
       </div>
@@ -117,7 +117,7 @@
         {#each genres as genre}
           <div class="genre">
             <div class="genre__icon" />
-            <a href={`movie/genres/${genre.id}/1`} class="genre__name">{ genre.name }</a>
+            <a rel=external href={`movie/genres/${genre.id}/1`} class="genre__name">{ genre.name }</a>
           </div>
         {/each}
       </div>

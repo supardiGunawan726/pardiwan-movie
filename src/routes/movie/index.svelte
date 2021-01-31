@@ -64,7 +64,7 @@
 
   // on selected movie listener
   const goToid = (e) => {
-    goto(`movie/${e.detail.id}`);
+    window.location = `movie/${e.detail.id}`
   }
 </script>
 
@@ -73,7 +73,7 @@
   <div class="grid">
     <div>
       <h4 class="grid__title">Top Rated Movies</h4>
-      <a class="grid__link" href="movie/top/1">see more</a>
+      <a class="grid__link" href="movie/top/1" rel=external>see more</a>
     </div>
     <Grid data={top} on:itemSelected={goToid}/>
   </div>
@@ -82,7 +82,7 @@
   <div class="grid">
     <div>
       <h4 class="grid__title">upcoming Movies</h4>
-      <a class="grid__link" href="movie/upcoming/1">see more</a>
+      <a class="grid__link" href="movie/upcoming/1" rel=external>see more</a>
     </div>
     <Grid data={upcoming} on:itemSelected={goToid}/>
   </div>
@@ -91,7 +91,7 @@
   <div class="grid">
     <div>
       <h4 class="grid__title">popular Movies</h4>
-      <a class="grid__link" href="movie/popular/1">see more</a>
+      <a class="grid__link" href="movie/popular/1" rel=external>see more</a>
     </div>
     <Grid data={popular} on:itemSelected={goToid}/>
   </div>

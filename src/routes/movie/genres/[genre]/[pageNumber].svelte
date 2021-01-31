@@ -41,7 +41,7 @@
   });
 
   const goToId = (e) => {
-    goto(`movie/${e.detail.id}`);
+    window.location = `movie/${e.detail.id}`
   }
 </script>
 

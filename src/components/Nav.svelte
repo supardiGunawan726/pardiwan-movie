@@ -39,9 +39,9 @@
     </div>
   </div>
   <div class="links" class:hidden={isOpen === false}>
-    <a class:active={segment === undefined} href="." class="links__item">home</a>
-    <a class:active={segment === "movie"} href="movie" class="links__item">Movie</a>
-    <a class:active={segment === "tv"} href="tv" class="links__item">TV Series</a>
+    <a rel=external class:active={segment === undefined} href="." class="links__item">home</a>
+    <a rel=external class:active={segment === "movie"} href="movie" class="links__item">Movie</a>
+    <a rel=external class:active={segment === "tv"} href="tv" class="links__item">TV Series</a>
   </div>
   <div class="search">
     <form on:submit|preventDefault={search}>

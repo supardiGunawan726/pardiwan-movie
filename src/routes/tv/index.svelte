@@ -53,7 +53,7 @@
 
 
   const goToid = (e) => {
-    goto(`tv/${e.detail.id}`);
+    window.location = `tv/${e.detail.id}`
   };
 </script>
 
@@ -63,7 +63,7 @@
   <div class="grid">
     <div>
       <h4 class="grid__title">Top Rated TV</h4>
-      <a class="grid__link" href="tv/top/1">see more</a>
+      <a class="grid__link" href="tv/top/1" rel=external>see more</a>
     </div>
     <Grid data={top} on:itemSelected={goToid} />
   </div>
@@ -72,7 +72,7 @@
   <div class="grid">
     <div>
       <h4 class="grid__title">Popular TV</h4>
-      <a class="grid__link" href="tv/popular/1">see more</a>
+      <a class="grid__link" href="tv/popular/1" rel=external>see more</a>
     </div>
     <Grid data={popular} on:itemSelected={goToid} />
   </div>
