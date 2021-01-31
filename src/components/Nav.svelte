@@ -10,7 +10,7 @@
   };
 
   const search = () => {
-    window.location = `movie/search${searchKey}`;
+    window.location = `movie/search/${searchKey}`;
   }
 </script>
 
