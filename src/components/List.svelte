@@ -56,5 +56,7 @@
     margin-top: 0.5rem;
     text-align: center;
     font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
   }
 </style>

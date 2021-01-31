@@ -1,5 +1,10 @@
 <script context="module">
-  import { upcomingMovieUrl, popularMovieUrl, popularTvUrl, genresUrl  } from "./_helper/urlGenerator.js";
+  import {
+    upcomingMovieUrl,
+    popularMovieUrl,
+    popularTvUrl,
+    genresUrl,
+  } from "./_helper/urlGenerator.js";
 
   export async function preload(page, session) {
     const res = await this.fetch(upcomingMovieUrl(1));
@@ -36,45 +41,54 @@
   let popularTv = [];
   let genres = [];
 
-  upcomingData.results.forEach(result => {
+  upcomingData.results.forEach((result) => {
     let id = result.id;
     let imageUrl = getImageUrl(result.poster_path, "w500");
-    let title = result.title; 
+    let title = result.title;
     upcoming.push({
-      id, imageUrl, title
+      id,
+      imageUrl,
+      title,
     });
   });
 
-  popularTvData.results.forEach(result => {
+  popularTvData.results.forEach((result) => {
     let id = result.id;
     let imageUrl = getImageUrl(result.poster_path, "w500");
-    let title = result.name; 
+    let title = result.name;
     popularTv.push({
-      id, imageUrl, title
+      id,
+      imageUrl,
+      title,
     });
-  })
+  });
 
-  genresData.genres.forEach(genre => {
+  genresData.genres.forEach((genre) => {
     let id = genre.id;
     let name = genre.name;
-    genres.push({ id, name })
-  })
+    genres.push({ id, name });
+  });
 
   const heroEvent = () => {
     window.location = `movie/${hero.id}`;
-  }
+  };
 
   const upcomingEvent = (e) => {
     window.location = `movie/${e.detail.id}`;
-  }
+  };
 
   const popularTvEvent = (e) => {
     window.location = `tv/${e.detail.id}`;
-  }
+  };
 </script>
 
 <svelte:head>
   <title>Pardiwan Movie Update</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
 </svelte:head>
 
 <main>
@@ -95,16 +109,18 @@
       <div class="list">
         <div>
           <h4 class="list__title">Upcoming movie</h4>
-          <a class="list__link" href="movie/upcoming/1" rel=external>see more</a>
+          <a class="list__link" href="movie/upcoming/1" rel="external"
+            >see more</a
+          >
         </div>
-        <List data={upcoming} on:itemSelected={upcomingEvent}/>
+        <List data={upcoming} on:itemSelected={upcomingEvent} />
       </div>
 
       <!-- popular TV list -->
       <div class="grid">
         <div>
           <h4 class="grid__title">Popular TV</h4>
-          <a class="grid__link" href="tv/popular/1" rel=external>see more</a>
+          <a class="grid__link" href="tv/popular/1" rel="external">see more</a>
         </div>
         <Grid data={popularTv} on:itemSelected={popularTvEvent} />
       </div>
@@ -117,7 +133,11 @@
         {#each genres as genre}
           <div class="genre">
             <div class="genre__icon" />
-            <a rel=external href={`movie/genres/${genre.id}/1`} class="genre__name">{ genre.name }</a>
+            <a
+              rel="external"
+              href={`movie/genres/${genre.id}/1`}
+              class="genre__name">{genre.name}</a
+            >
           </div>
         {/each}
       </div>
@@ -149,11 +169,13 @@
 
   .hero__title {
     font-size: 1.5rem;
+    font-family: "Poppins", sans-serif;
     font-weight: bold;
     text-transform: capitalize;
   }
 
   .hero__overview {
+    font-family: "Poppins", sans-serif;
     font-size: 0.7rem;
     font-style: italic;
   }
@@ -176,12 +198,14 @@
   .genres h4 {
     color: white;
     font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
     text-transform: capitalize;
   }
 
   .list__link,
   .grid__link {
     font-size: 0.8rem;
+    font-family: "Poppins", sans-serif;
     text-decoration: none;
     text-transform: lowercase;
     color: royalblue;
@@ -204,8 +228,9 @@
 
   .genre__name {
     color: #eee;
+    font-family: "Poppins", sans-serif;
     text-transform: capitalize;
-    text-decoration: none
+    text-decoration: none;
   }
 
   .genre__name:hover {

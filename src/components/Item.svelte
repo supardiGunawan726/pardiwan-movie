@@ -56,12 +56,14 @@
   .item__title {
     font-size: 1rem;
     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
     color: white;
   }
 
   .item__vote {
     font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.5rem;
     color: yellow;
     margin-bottom: 0.5rem;
@@ -73,6 +75,7 @@
     display: inline-block;
     width: 100%;
     font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.2em;
     margin: auto 0;
     color: #eee;

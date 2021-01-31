@@ -45,6 +45,15 @@
   }
 </script>
 
+<svelte:head>
+  <title>{ genresName } movies</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
 <section class="container">
   <h4 class="container__title">{genresName} movies</h4>
   <div class="info__wrapper">
@@ -71,6 +80,7 @@
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
+    font-size: 'Poppins', sans-serif;
     text-transform: capitalize;
     text-align: center;
     width: 100%;
@@ -88,6 +98,7 @@
     text-transform: capitalize;
     color: white;
     font-size: 1rem;
+    font-size: 'Poppins', sans-serif;
   }
 
   .info__next {
@@ -95,6 +106,7 @@
     text-transform: lowercase;
     text-decoration: none;
     font-size: 0.8rem;
+    font-size: 'Poppins', sans-serif;
   }
 
   .grid {

@@ -62,6 +62,15 @@
   }
 </script>
 
+<svelte:head>
+  <title>{ title }</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+
 <section class="container">
   <div class="hero">
     <Poster imageUrl={heroImage}>
@@ -150,6 +159,7 @@
     bottom: 0;
     font-size: 0.8rem;
     font-style: italic;
+    font-family: 'Poppins', sans-serif;
   }
 
   .content__wrapper {
@@ -182,6 +192,7 @@
   .info__title {
     color: white;
     font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
     line-height: 1em;
     margin-bottom: 0.5rem;
   }
@@ -190,6 +201,7 @@
   .info__release {
     color: #eee;
     font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
     display: block;
   }
@@ -200,6 +212,7 @@
     color: yellow;
     font-weight: bold;
     font-size: 14px;
+    font-family: 'Poppins', sans-serif;
   }
 
   .info__rate span {
@@ -211,6 +224,7 @@
     display: block;
     color: #eee;
     font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
     margin-top: 0.5rem;
   }
 
@@ -228,12 +242,14 @@
   .sidebar h4 {
     color: white;
     font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
     text-transform: capitalize;
     margin-bottom: 0.25rem;
   }
 
   .overview p {
     font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
     text-align: 1.2rem;
     color: #eee;
   }

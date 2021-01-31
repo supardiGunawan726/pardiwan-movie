@@ -1,0 +1,3 @@
+# things ignored
+node_modules/
+__sapper__/

@@ -57,8 +57,16 @@
   };
 </script>
 
-<section>
+<svelte:head>
+  <title>TV series list</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
 
+<section>
   <!-- top rated tv -->
   <div class="grid">
     <div>
@@ -88,12 +96,14 @@
 
   .grid__title {
     font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
     color: white;
   }
 
   .grid__link {
     color: royalblue;
     font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
     text-transform: lowercase;
     text-decoration: none;
   }

@@ -7,9 +7,9 @@
   const dispatch = createEventDispatcher();
   const goToDetail = (id) => {
     dispatch("itemSelected", {
-      id
+      id,
     });
-  }
+  };
 </script>
 
 <div class="grid">
@@ -18,7 +18,11 @@
       <div class="grid__poster">
         <Poster imageUrl={item.imageUrl} />
       </div>
-      <h4 class="grid__title">{item.title}</h4>
+      {#if (item.title.length > 10)}
+        <h4 class="grid__title">{item.title.substring(0, 10)}...</h4>
+      {:else}
+        <h4 class="grid__title">{item.title}</h4>
+      {/if}
     </div>
   {/each}
 </div>
@@ -54,7 +58,8 @@
     text-align: center;
     color: white;
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
     text-transform: capitalize;
     margin-top: 0.5rem;
   }

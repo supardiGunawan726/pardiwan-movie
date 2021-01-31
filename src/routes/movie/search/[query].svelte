@@ -35,11 +35,21 @@
       overview,
     });
   });
+  console.log(movies);
 
   const goToid = (e) => {
-    window.location = `movie/${e.detail.id}`
+    window.location = `movie/${e.detail.id}`;
   };
 </script>
+
+<svelte:head>
+  <title>Search {query}</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
 
 <section>
   <div class="grid">
@@ -47,16 +57,18 @@
     <div class="grid__items">
       {#if movies.length > 0}
         {#each movies as movie}
-          <div class="grid__item">
-            <Item
-              on:clicked={goToid}
-              imageUrl={movie.imageUrl}
-              id={movie.id}
-              title={movie.title}
-              desc={movie.overview}
-              vote={movie.vote}
-            />
-          </div>
+          {#if movie.imageUrl != null}
+            <div class="grid__item">
+              <Item
+                on:clicked={goToid}
+                imageUrl={movie.imageUrl}
+                id={movie.id}
+                title={movie.title}
+                desc={movie.overview}
+                vote={movie.vote}
+              />
+            </div>
+          {/if}
         {/each}
       {:else}
         <div class="zero">Ups there is no movies</div>
@@ -72,6 +84,7 @@
 
   .grid__title {
     font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
     color: white;
   }
 
@@ -90,6 +103,7 @@
   .zero {
     width: 100%;
     font-size: 1rem;
+    font-family: "Poppins", sans-serif;
     color: white;
     text-align: center;
     padding: 3rem 0;
