@@ -27,15 +27,16 @@
     let imageUrl = getImageUrl(result.poster_path, "w500");
     let vote = result.vote_average;
     let overview = result.overview;
-    movies.push({
-      id,
-      title,
-      imageUrl,
-      vote,
-      overview,
-    });
+    if (result.poster_path !== null) {
+      movies.push({
+        id,
+        title,
+        imageUrl,
+        vote,
+        overview,
+      });
+    }
   });
-  console.log(movies);
 
   const goToid = (e) => {
     window.location = `movie/${e.detail.id}`;
@@ -57,18 +58,16 @@
     <div class="grid__items">
       {#if movies.length > 0}
         {#each movies as movie}
-          {#if movie.imageUrl != null}
-            <div class="grid__item">
-              <Item
-                on:clicked={goToid}
-                imageUrl={movie.imageUrl}
-                id={movie.id}
-                title={movie.title}
-                desc={movie.overview}
-                vote={movie.vote}
-              />
-            </div>
-          {/if}
+          <div class="grid__item">
+            <Item
+              on:clicked={goToid}
+              imageUrl={movie.imageUrl}
+              id={movie.id}
+              title={movie.title}
+              desc={movie.overview}
+              vote={movie.vote}
+            />
+          </div>
         {/each}
       {:else}
         <div class="zero">Ups there is no movies</div>
