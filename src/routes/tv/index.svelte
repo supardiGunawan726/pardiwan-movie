@@ -10,7 +10,6 @@
 
     const r2 = await this.fetch(popularTvUrl(1));
     const popularTvData = await r2.json();
-    console.log(popularTvData);
 
     return {
       topTvData,

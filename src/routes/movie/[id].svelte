@@ -20,6 +20,7 @@
   let releaseDate = data.release_date;
   let tagline = data.tagline;
   let heroImage = getImageUrl(data.backdrop_path);
+  console.log(data.backdrop_path);
   let posterImage = getImageUrl(data.poster_path, "w500");
   let title = data.title;
   let rate = data.vote_average;
@@ -28,7 +29,10 @@
   let directors = [];
   let caster = [];
   let overview = data.overview;
-  let trailerUrl = getTrailerUrl(data.videos.results[0].key);
+  let trailerUrl =
+    data.videos.key !== undefined
+      ? getTrailerUrl(data.videos.results[0].key)
+      : null;
   let similar = [];
 
   data.credits.crew.forEach(function (entry) {
@@ -55,16 +59,18 @@
     let title = movie.title;
     let desc = movie.overview;
     let vote = movie.vote_average;
-    similar.push({imageUrl, id, title, desc, vote});
+    if (movie.poster_path !== null) {
+      similar.push({ imageUrl, id, title, desc, vote });
+    }
   });
 
   const goToid = (e) => {
     window.location = "movie/" + e.detail.id;
-  }
+  };
 </script>
 
 <svelte:head>
-  <title>{ title }</title>
+  <title>{title}</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
@@ -73,11 +79,13 @@
 </svelte:head>
 
 <section class="container">
-  <div class="hero">
-    <Poster imageUrl={heroImage}>
-      <div class="hero__tagline">{tagline}</div>
-    </Poster>
-  </div>
+  {#if data.backdrop_path !== null}
+    <div class="hero">
+      <Poster imageUrl={heroImage}>
+        <div class="hero__tagline">{tagline}</div>
+      </Poster>
+    </div>
+  {/if}
   <div class="content__wrapper">
     <div class="content">
       <div class="info">
@@ -112,17 +120,19 @@
         <h4>overview</h4>
         <p>{overview}</p>
       </div>
-      <div class="trailer">
-        <h4>Trailer</h4>
-        <iframe
-          title="trailer"
-          width="100%"
-          height="200px"
-          src={trailerUrl}
-          frameborder="0"
-          allowfullscreen
-        />
-      </div>
+      {#if trailerUrl !== null}
+        <div class="trailer">
+          <h4>Trailer</h4>
+          <iframe
+            title="trailer"
+            width="100%"
+            height="200px"
+            src={trailerUrl}
+            frameborder="0"
+            allowfullscreen
+          />
+        </div>
+      {/if}
     </div>
     <div class="sidebar">
       <h4>Similar Movies</h4>
@@ -169,7 +179,7 @@
     bottom: 0;
     font-size: 0.8rem;
     font-style: italic;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .content__wrapper {
@@ -202,7 +212,7 @@
   .info__title {
     color: white;
     font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1em;
     margin-bottom: 0.5rem;
   }
@@ -212,7 +222,7 @@
     color: #eee;
     font-size: 0.7rem;
     font-style: italic;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     display: block;
   }
 
@@ -222,12 +232,12 @@
     color: yellow;
     font-weight: bold;
     font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .info__rate span {
     margin-left: 0.25rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .info__director,
@@ -235,7 +245,7 @@
     display: block;
     color: #eee;
     font-size: 0.8rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin-top: 0.5rem;
   }
 
@@ -253,7 +263,7 @@
   .sidebar h4 {
     color: white;
     font-size: 1.2rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     text-transform: capitalize;
     margin-bottom: 0.25rem;
   }
@@ -263,7 +273,6 @@
     text-align: 1.2rem;
     color: #eee;
   }
-
 
   .item__wrapper {
     padding: 0.5rem;
@@ -277,6 +286,15 @@
     height: 170px;
   }
 
+  .zero {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+  }
+
   @media screen and (min-width: 480px) {
     .hero {
       height: 300px;
@@ -285,7 +303,6 @@
     .info__poster {
       height: 200px;
     }
-
   }
 
   @media screen and (min-width: 768px) {
@@ -304,7 +321,6 @@
     iframe {
       height: 300px;
     }
-
   }
 
   @media screen and (min-width: 1280px) {
@@ -323,7 +339,6 @@
     iframe {
       height: 400px;
     }
-
   }
 
   @media screen and (min-width: 1600px) {
@@ -338,6 +353,5 @@
     iframe {
       height: 500px;
     }
-
   }
 </style>

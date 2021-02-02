@@ -110,22 +110,21 @@
 
   @media screen and (min-width: 768px) {
     .grid__item {
-      margin: 0 auto;
-      width: 60%;
+      width: 80%;
       height: 200px;
     }
   }
 
   @media screen and (min-width: 1280px) {
     .grid__item {
-      width: 50%;
+      width: 70%;
       height: 300px;
     }
   }
 
   @media screen and (min-width: 1600px) {
     .grid__item {
-      width: 40%;
+      width: 60%;
     }
   }
 </style>

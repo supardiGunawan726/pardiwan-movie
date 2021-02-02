@@ -82,6 +82,10 @@
   }
 
   @media screen and (min-width: 768px) {
+    .item {
+      width: 50%;
+    }
+
     .item__title {
       font-size: 1.2rem;
     }
@@ -92,12 +96,20 @@
   }
 
   @media screen and (min-width: 1280px) {
+    .item {
+      width: 70%;
+    }
+
     .item__title {
       font-size: 1.3rem;
     }
   }
 
   @media screen and (min-width: 1600px) {
+    .item {
+      width: 60%;
+    }
+
     .item__title {
       font-size: 1.5rem;
     }
