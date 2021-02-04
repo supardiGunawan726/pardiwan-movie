@@ -20,7 +20,6 @@
   let releaseDate = data.release_date;
   let tagline = data.tagline;
   let heroImage = getImageUrl(data.backdrop_path);
-  console.log(data.backdrop_path);
   let posterImage = getImageUrl(data.poster_path, "w500");
   let title = data.title;
   let rate = data.vote_average;
@@ -30,7 +29,7 @@
   let caster = [];
   let overview = data.overview;
   let trailerUrl =
-    data.videos.key !== undefined
+    data.videos.results[0].key != undefined
       ? getTrailerUrl(data.videos.results[0].key)
       : null;
   let similar = [];
