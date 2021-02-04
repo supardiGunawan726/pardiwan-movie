@@ -30,7 +30,6 @@
     display: flex;
     justify-content: flex-start;
     overflow-x: auto;
-    grid-gap: 1rem;
     align-items: flex-start;
   }
 
@@ -39,6 +38,10 @@
     flex-direction: column;
     align-items: center;
     transition: transform ease-in-out 200ms;
+  }
+
+  .list__item {
+    margin-right: 1rem;
   }
 
   .list__item:hover {
