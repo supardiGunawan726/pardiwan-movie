@@ -53,10 +53,11 @@
 
   .grid__poster {
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
   }
 
   .grid__title {
+    flex-grow: 0;
     text-align: center;
     color: white;
     font-size: 0.8rem;

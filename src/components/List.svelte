@@ -30,7 +30,7 @@
     display: flex;
     justify-content: flex-start;
     overflow-x: auto;
-    gap: 1rem;
+    grid-gap: 1rem;
     align-items: flex-start;
   }
 
