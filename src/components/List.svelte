@@ -42,7 +42,7 @@
   }
 
   .list__item:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .list__poster {

@@ -44,7 +44,7 @@
     genres.push(genre.name);
   });
 
-  let i = 0;
+  var i = 0;
   data.credits.cast.forEach((item) => {
     i++;
     if (i <= 5) {
@@ -52,13 +52,15 @@
     }
   });
 
+  var i = 0
   data.similar.results.forEach((movie) => {
     let imageUrl = getImageUrl(movie.poster_path);
     let id = movie.id;
     let title = movie.title;
     let desc = movie.overview;
     let vote = movie.vote_average;
-    if (movie.poster_path !== null) {
+    if (movie.poster_path !== null && i < 5) {
+      i++;
       similar.push({ imageUrl, id, title, desc, vote });
     }
   });
@@ -201,7 +203,7 @@
   }
 
   .info__poster {
-    height: 150px;
+    height: 100%;
   }
 
   .info div:nth-child(2) {
@@ -298,10 +300,6 @@
     .hero {
       height: 300px;
     }
-
-    .info__poster {
-      height: 200px;
-    }
   }
 
   @media screen and (min-width: 768px) {
@@ -309,14 +307,14 @@
       height: 400px;
     }
 
+    .content__wrapper {
+      grid-template-columns: 60% auto;
+    }
+
     .info {
-      grid-template-columns: 30% auto;
+      grid-template-columns: 25% auto;
     }
-
-    .info__poster {
-      height: 250px;
-    }
-
+  
     iframe {
       height: 300px;
     }
@@ -332,7 +330,7 @@
     }
 
     .info {
-      grid-template-columns: 25% auto;
+      grid-template-columns: 20% auto;
     }
 
     iframe {
@@ -346,7 +344,7 @@
     }
 
     .info {
-      grid-template-columns: 20% auto;
+      grid-template-columns: 15% auto;
     }
 
     iframe {

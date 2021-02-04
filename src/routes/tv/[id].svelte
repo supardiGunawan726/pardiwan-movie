@@ -40,21 +40,23 @@
     genres.push(genre.name);
   });
 
-  let i = 0;
+  var i = 0;
   data.credits.cast.forEach((item) => {
     i++;
     if (i <= 5) {
       caster.push(item.name);
     }
   });
-
+  
+  var i = 0;
   data.similar.results.forEach((movie) => {
     let imageUrl = getImageUrl(movie.poster_path);
     let id = movie.id;
     let title = movie.name;
     let desc = movie.overview;
     let vote = movie.vote_average;
-    if (movie.poster_path !== null) {
+    if (movie.poster_path !== null && i < 5) {
+      i++;
       similar.push({ imageUrl, id, title, desc, vote });
     }
   });
@@ -187,7 +189,7 @@
   }
 
   .info__poster {
-    height: 150px;
+    height: 100%;
   }
 
   .info div:nth-child(2) {
@@ -206,8 +208,8 @@
   .info__release {
     color: #eee;
     font-size: 0.7rem;
-    font-family: "Poppins", sans-serif;
     font-style: italic;
+    font-family: "Poppins", sans-serif;
     display: block;
   }
 
@@ -222,6 +224,7 @@
 
   .info__rate span {
     margin-left: 0.25rem;
+    font-family: "Poppins", sans-serif;
   }
 
   .info__director,
@@ -237,13 +240,11 @@
     margin-top: 0.25rem;
   }
 
-  .overview,
-  .trailer {
+  .overview {
     margin-top: 1rem;
   }
 
   .overview h4,
-  .trailer h4,
   .sidebar h4 {
     color: white;
     font-size: 1.2rem;
@@ -254,7 +255,6 @@
 
   .overview p {
     font-size: 0.8rem;
-    font-family: "Poppins", sans-serif;
     text-align: 1.2rem;
     color: #eee;
   }
@@ -276,17 +276,13 @@
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
   }
 
   @media screen and (min-width: 480px) {
     .hero {
       height: 300px;
-    }
-
-    .info__poster {
-      height: 200px;
     }
   }
 
@@ -295,18 +291,14 @@
       height: 400px;
     }
 
+    .content__wrapper {
+      grid-template-columns: 60% auto;
+    }
+
     .info {
-      grid-template-columns: 30% auto;
+      grid-template-columns: 25% auto;
     }
-
-    .info__poster {
-      height: 250px;
-    }
-
-    iframe {
-      height: 300px;
-    }
-  }
+   }
 
   @media screen and (min-width: 1280px) {
     .hero {
@@ -318,11 +310,7 @@
     }
 
     .info {
-      grid-template-columns: 25% auto;
-    }
-
-    iframe {
-      height: 400px;
+      grid-template-columns: 20% auto;
     }
   }
 
@@ -332,11 +320,7 @@
     }
 
     .info {
-      grid-template-columns: 20% auto;
-    }
-
-    iframe {
-      height: 500px;
+      grid-template-columns: 15% auto;
     }
   }
 </style>
